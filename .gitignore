@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+package-lock.json
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+cypress/results/
+
+# Relatórios
+allure-results/
+mochawesome-report/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+
+# Logs e temporários
+*.log
+*.tmp
+*.env
+.env.*
