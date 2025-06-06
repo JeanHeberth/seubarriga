@@ -17,7 +17,7 @@ Este repositório contém a automação de testes E2E com Cypress para a platafo
 
 ```bash
 # Clone o projeto
-git clone https://github.com/seu-usuario/seubarriga-cypress.git
+git clone https://github.com/JeanHeberth/seubarriga.git
 cd seubarriga-cypress
 
 # Instale as dependências
