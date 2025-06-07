@@ -22,3 +22,19 @@ Cypress.Commands.add('validarAlerta', (mensagemEsperada, tipo = 'success') => {
         .should('be.visible')
         .and('contain', mensagemEsperada);
 });
+
+/**
+ *
+ * @param {string} email
+ * @param {string} senha
+ * Comando personalizado para cadastro de usuário
+ */
+Cypress.Commands.add('cadastrarUsuario', (usuario) => {
+    cy.visit('/login');
+    cy.contains('Novo usuário?').click();
+    cy.get('#nome').type(usuario.nome);
+    cy.get('#email').type(usuario.email);
+    cy.get('#senha').type(usuario.senha);
+    cy.get('.btn').click();
+});
+
