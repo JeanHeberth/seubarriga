@@ -5,7 +5,8 @@ describe('Login - Seu Barriga', () => {
 
     it('Deve realizar login com sucesso', () => {
         cy.realizarLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
-        cy.validarAlerta('Bem vindo');
+        cy.validarAlerta(`Bem vindo, ${Cypress.env('NOME')}!`, 'success');
+        cy.realizarLogout();
     });
 
 

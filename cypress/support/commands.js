@@ -17,10 +17,14 @@ Cypress.Commands.add('realizarLogin', (email, senha) => {
  * Comando personalizado para validar a mensagem
  */
 Cypress.Commands.add('validarAlerta', (mensagemEsperada, tipo = 'success') => {
-    const classe =  `.alert-${tipo}`
+    const classe = `.alert-${tipo}`;
     cy.get(classe)
         .should('be.visible')
-        .and('contain', mensagemEsperada);
+        .invoke('text')
+        .then((texto) => {
+            expect(texto.trim()).to.include(mensagemEsperada);
+            cy.log('🔎 Mensagem recebida:', texto.trim());
+        });
 });
 
 /**
@@ -32,9 +36,16 @@ Cypress.Commands.add('validarAlerta', (mensagemEsperada, tipo = 'success') => {
 Cypress.Commands.add('cadastrarUsuario', (usuario) => {
     cy.visit('/login');
     cy.contains('Novo usuário?').click();
-    cy.get('#nome').type(usuario.nome);
-    cy.get('#email').type(usuario.email);
-    cy.get('#senha').type(usuario.senha);
+
+    if (usuario.nome) {
+        cy.get('#nome').clear().type(usuario.nome);
+    }
+    if (usuario.email) {
+        cy.get('#email').clear().type(usuario.email);
+    }
+    if (usuario.senha) {
+        cy.get('#senha').clear().type(usuario.senha);
+    }
     cy.get('.btn').click();
 });
 
@@ -60,3 +71,10 @@ Cypress.Commands.add('cadastrarConta', (nomeConta) => {
     cy.get('.btn').click();
 });
 
+/**
+ *
+ * Comando personalizado para realizar logout
+ */
+Cypress.Commands.add('realizarLogout', () => {
+    cy.contains('Sair').click();
+});
