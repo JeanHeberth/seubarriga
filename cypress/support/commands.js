@@ -38,3 +38,25 @@ Cypress.Commands.add('cadastrarUsuario', (usuario) => {
     cy.get('.btn').click();
 });
 
+/**
+ *
+ * @param {string} email
+ * @param {string} senha
+ * Comando personalizado para acessar menu de conta
+ */
+Cypress.Commands.add('acessarMenuConta', () => {
+    cy.get(':nth-child(2) > .dropdown-toggle').click();
+    cy.contains('Adicionar').click();
+});
+
+/**
+ *
+ * @param {string} email
+ * @param {string} senha
+ * Comando personalizado para cadastro de conta
+ */
+Cypress.Commands.add('cadastrarConta', (nomeConta) => {
+    cy.get('#nome').type(nomeConta);
+    cy.get('.btn').click();
+});
+
