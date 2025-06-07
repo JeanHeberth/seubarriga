@@ -1,8 +1,8 @@
 import {gerarUsuarioFake} from "../support/fakeUser";
 
 describe('Fluxo completo de Login e cadastro de usuário', () => {
-    it('Deve validar o fluxo completo: cadastro, erro de login e login com sucesso', () => {
-
+    it('Deve validar o fluxo completo: cadastro, erro de login e login com sucesso',
+        () => {
         const usuario = gerarUsuarioFake();
 
         // Login com usuário não cadastrado
