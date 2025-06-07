@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 
 export function gerarUsuarioFake() {
     return {
@@ -6,4 +6,8 @@ export function gerarUsuarioFake() {
         email: faker.internet.email(),
         senha: faker.internet.password()
     };
+}
+
+export function gerarNomeConta(sufixo = '') {
+    return `Conta - ${Date.now().toString().slice(-5)}${sufixo}`;
 }

@@ -8,20 +8,13 @@ describe('Fluxo completo de Contas', () => {
     })
 
     it('Deve cadastrar duas contas com sucesso', () => {
-        cy.get(':nth-child(2) > .dropdown-toggle').click();
-        cy.contains('Adicionar').click();
+       cy.acessarMenuConta();
+       cy.cadastrarConta(conta1);
+       cy.validarAlerta('Conta adicionada com sucesso!', 'success');
 
-        cy.get('#nome').type(conta1);
-        cy.get('.btn').click();
-        cy.validarAlerta('Conta adicionada com sucesso!', 'success');
-
-        cy.get(':nth-child(2) > .dropdown-toggle').click();
-        cy.contains('Adicionar').click();
-
-        cy.get('#nome').type(conta2);
-        cy.get('.btn').click();
-        cy.validarAlerta('Conta adicionada com sucesso!', 'success');
-
+       cy.acessarMenuConta();
+       cy.cadastrarConta(conta2);
+       cy.validarAlerta('Conta adicionada com sucesso!', 'success');
     });
 })
 
