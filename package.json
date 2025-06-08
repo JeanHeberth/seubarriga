@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "test": "cypress run",
     "cypress:run": "cypress run",
     "report:merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/output.json",
     "report:generate": "marge cypress/reports/output.json -f report -o cypress/reports/html",
