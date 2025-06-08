@@ -9,13 +9,3 @@ export function gerarUsuarioFake(overrides = {}) {
     };
 }
 
-export function gerarNomeConta(sufixo = '') {
-    return `Conta - ${Date.now().toString().slice(-5)}${sufixo}`;
-}
-
-export function gerarUsuarioFakeSemNome() {
-    return {
-        email: faker.internet.email(),
-        senha: faker.internet.password()
-    };
-}
