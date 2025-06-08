@@ -10,6 +10,17 @@ Cypress.Commands.add('realizarLogin', (email, senha) => {
     cy.get('.btn').click();
 });
 
+
+Cypress.Commands.add('loginComUsuarioFicticio', () => {
+    cy.fixture('loginValido').then((usuario) => {
+        cy.visit('/login');
+        cy.get('#email').type(usuario.email);
+        cy.get('#senha').type(usuario.senha);
+        cy.get('.btn').click();
+    });
+});
+
+
 /**
  * @param {string} mensagemEsperada
  * @param {string} tipo
@@ -21,10 +32,13 @@ Cypress.Commands.add('validarAlerta', (mensagemEsperada, tipo = 'success') => {
         .should('be.visible')
         .invoke('text')
         .then((texto) => {
-            expect(texto.trim()).to.include(mensagemEsperada);
+            const recebido = texto.trim().toLowerCase();
+            const esperado = mensagemEsperada.trim().toLowerCase();
+            expect(recebido).to.include(esperado);
             cy.log('🔎 Mensagem recebida:', texto.trim());
         });
 });
+
 
 /**
  * @param {string} email

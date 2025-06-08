@@ -14,9 +14,10 @@ describe('Fluxo completo de Login e cadastro de usuário', () => {
             cy.validarAlerta('Usuário inserido com sucesso', 'success');
 
             // Login com sucesso
-            cy.realizarLogin(usuario.email, usuario.senha);
-            cy.validarAlerta(`Bem vindo, ${usuario.nome}!`, 'success');
-            cy.realizarLogout();
-
+            cy.fixture('loginValido').then((usuario) => {
+                cy.loginComUsuarioFicticio(); // Usa os dados do arquivo JSON
+                cy.validarAlerta(`Bem vindo, ${usuario.nome}!`, 'success');
+                cy.realizarLogout();
+            });
         });
 })

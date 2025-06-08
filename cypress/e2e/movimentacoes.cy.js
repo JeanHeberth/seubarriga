@@ -6,8 +6,10 @@ import {
 
 describe('Gestão de Movimentações', () => {
     beforeEach(() => {
-        cy.realizarLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
-        cy.validarAlerta(`Bem vindo, ${Cypress.env('NOME')}!`, 'success');
+        cy.fixture('loginValido').then((usuario) => {
+            cy.loginComUsuarioFicticio();
+            cy.validarAlerta(`Bem vindo, ${usuario.nome}!`, 'success');
+        });
     });
 
     it('Deve criar uma movimentação de Receita e uma de Despesa', () => {

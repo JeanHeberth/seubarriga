@@ -1,12 +1,14 @@
-import { faker } from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 
 describe('Login - Seu Barriga', () => {
 
 
     it('Deve realizar login com sucesso', () => {
-        cy.realizarLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
-        cy.validarAlerta(`Bem vindo, ${Cypress.env('NOME')}!`, 'success');
-        cy.realizarLogout();
+        cy.fixture('loginValido').then((usuario) => {
+            cy.loginComUsuarioFicticio(); // Usa os dados do arquivo JSON
+            cy.validarAlerta(`Bem vindo, ${usuario.nome}!`, 'success');
+            cy.realizarLogout();
+        });
     });
 
 

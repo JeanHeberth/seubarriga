@@ -1,8 +1,4 @@
-import {
-    gerarContas,
-    gerarNomeContaAtualizada,
-    gerarContasFixas
-} from '../support/fakeConta';
+import {gerarContas, gerarNomeContaAtualizada, gerarContasFixas} from '../support/fakeConta';
 
 describe('Gestão de Contas', () => {
     const contas = gerarContas(2); // mínimo de 2
@@ -10,10 +6,11 @@ describe('Gestão de Contas', () => {
     const contasFixas = gerarContasFixas();
 
     beforeEach(() => {
-        cy.realizarLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
-        cy.validarAlerta(`Bem vindo, ${Cypress.env('NOME')}!`, 'success');
+        cy.fixture('loginValido').then((usuario) => {
+            cy.loginComUsuarioFicticio(); // Usa os dados do arquivo JSON
+            cy.validarAlerta(`Bem vindo, ${usuario.nome}!`, 'success');
+        });
     });
-
     it('Deve cadastrar duas contas com sucesso', () => {
         contas.forEach((nomeConta) => {
             cy.acessarMenuConta();
