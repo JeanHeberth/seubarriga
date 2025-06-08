@@ -20,5 +20,7 @@ describe('Resumo Mensal', () => {
         const {mes, ano} = obterMesEAnoAtual();
         cy.filtrarResumoMensal(mes, ano);
         cy.validarSeResumoPossuiMovimentacoes();
+        cy.realizarLogout();
     });
+
 });
