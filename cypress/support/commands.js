@@ -75,8 +75,33 @@ Cypress.Commands.add('listarConta', () => {
  * Comando personalizado para cadastro de conta
  */
 Cypress.Commands.add('cadastrarConta', (nomeConta) => {
-    cy.get('#nome').type(nomeConta);
+    cy.get('#nome').clear().type(nomeConta);
     cy.get('.btn').click();
+});
+
+/**
+ * Comando personalizado para clicar no ícone editar de conta
+ */
+Cypress.Commands.add('editarConta', (nomeConta) => {
+    cy.get('table#tabelaContas').should('be.visible');
+    cy.contains('td', nomeConta)
+        .should('exist')
+        .parent('tr')
+        .find('a[href*="/editarConta"]')
+        .click();
+});
+
+/**
+ * Remove uma conta pelo nome
+ * @param {string} nomeConta
+ */
+Cypress.Commands.add('removerConta', (nomeConta) => {
+    cy.get('table#tabelaContas').should('be.visible');
+    cy.contains('td', nomeConta)
+        .should('exist')
+        .parent('tr')
+        .find('a[href*="/removerConta"]')
+        .click();
 });
 
 /**

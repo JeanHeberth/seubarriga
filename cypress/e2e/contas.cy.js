@@ -1,13 +1,18 @@
-import {gerarContas, gerarNomeConta} from "../support/fakeConta";
+import {
+    gerarContas,
+    gerarNomeContaAtualizada,
+    gerarContasFixas
+} from '../support/fakeConta';
 
-
-describe('Fluxo completo de Contas', () => {
-    const contas = gerarContas(2)
+describe('Gestão de Contas', () => {
+    const contas = gerarContas(2); // mínimo de 2
+    const contaAtualizada = gerarNomeContaAtualizada(contas[0]);
+    const contasFixas = gerarContasFixas();
 
     beforeEach(() => {
         cy.realizarLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
         cy.validarAlerta(`Bem vindo, ${Cypress.env('NOME')}!`, 'success');
-    })
+    });
 
     it('Deve cadastrar duas contas com sucesso', () => {
         contas.forEach((nomeConta) => {
@@ -15,12 +20,40 @@ describe('Fluxo completo de Contas', () => {
             cy.adicionarConta();
             cy.cadastrarConta(nomeConta);
             cy.validarAlerta('Conta adicionada com sucesso!', 'success');
-
-
-            cy.acessarMenuConta();
-            cy.listarConta();
-            cy.contains(nomeConta).should('be.visible');
         });
     });
-})
 
+    it('Deve editar a primeira conta', () => {
+        const nomeOriginal = contas[0];
+
+        cy.acessarMenuConta();
+        cy.adicionarConta();
+        cy.cadastrarConta(nomeOriginal);
+
+        cy.acessarMenuConta();
+        cy.listarConta();
+        cy.editarConta(nomeOriginal);
+        cy.cadastrarConta(contaAtualizada);
+        cy.validarAlerta('Conta alterada com sucesso!', 'success');
+    });
+
+    it('Não deve criar uma conta com nome já existente', () => {
+        const nomeDuplicado = contasFixas.original;
+
+        cy.acessarMenuConta();
+        cy.adicionarConta();
+        cy.cadastrarConta(nomeDuplicado);
+
+        cy.acessarMenuConta();
+        cy.adicionarConta();
+        cy.cadastrarConta(nomeDuplicado);
+        cy.validarAlerta('Já existe uma conta com esse nome!', 'danger');
+    });
+
+    it('Não deve remover conta com movimentações vinculadas', () => {
+        cy.acessarMenuConta();
+        cy.listarConta();
+        cy.removerConta(contasFixas.comMovimentacao);
+        cy.validarAlerta('Conta em uso na movimentações', 'danger');
+    });
+});
