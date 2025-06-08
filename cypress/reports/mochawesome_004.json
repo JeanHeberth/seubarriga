@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-08T19:54:07.686Z",
-    "end": "2025-06-08T19:54:12.147Z",
-    "duration": 4461,
+    "start": "2025-06-08T20:07:23.789Z",
+    "end": "2025-06-08T20:07:28.314Z",
+    "duration": 4525,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "b335b1cb-71c5-4e3b-9ed8-23d189bd49c1",
+      "uuid": "51268fd0-5c84-4bf9-8acd-2fb0f9f35271",
       "title": "",
       "fullFile": "cypress/e2e/resumoMensal.cy.js",
       "file": "cypress/e2e/resumoMensal.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "7fe1115a-7c3d-4f82-bc26-0896d6f8da48",
+          "uuid": "2c6f9f22-3f41-4b7a-ba54-14afb5d52d08",
           "title": "Resumo Mensal",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Deve acessar o resumo mensal e excluir uma movimentação",
               "fullTitle": "Resumo Mensal Deve acessar o resumo mensal e excluir uma movimentação",
               "timedOut": null,
-              "duration": 2476,
+              "duration": 2413,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "const {\n  mes,\n  ano\n} = (0, _dataUtils.obterMesEAnoAtual)();\ncy.acessarResumoMensal(mes, ano);\ncy.validarSeResumoPossuiMovimentacoes();\ncy.removerPrimeiraMovimentacaoDoResumo();\ncy.validarAlerta('Movimentação removida com sucesso!', 'success');",
               "err": {},
-              "uuid": "8a236ac9-f819-4ef1-85fc-de892e753b21",
-              "parentUUID": "7fe1115a-7c3d-4f82-bc26-0896d6f8da48",
+              "uuid": "e28b91cf-c90a-45cd-ad83-7360f32e0f3b",
+              "parentUUID": "2c6f9f22-3f41-4b7a-ba54-14afb5d52d08",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Deve acessar o resumo mensal com mês/ano dinâmico",
               "fullTitle": "Resumo Mensal Deve acessar o resumo mensal com mês/ano dinâmico",
               "timedOut": null,
-              "duration": 1964,
+              "duration": 2098,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "const {\n  mes,\n  ano\n} = (0, _dataUtils.obterMesEAnoAtual)();\ncy.filtrarResumoMensal(mes, ano);\ncy.validarSeResumoPossuiMovimentacoes();",
               "err": {},
-              "uuid": "05c718b2-4bed-4601-bbf4-74e483310b49",
-              "parentUUID": "7fe1115a-7c3d-4f82-bc26-0896d6f8da48",
+              "uuid": "623d5852-b8bb-40d3-8e30-3f3b0ce5b920",
+              "parentUUID": "2c6f9f22-3f41-4b7a-ba54-14afb5d52d08",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "8a236ac9-f819-4ef1-85fc-de892e753b21",
-            "05c718b2-4bed-4601-bbf4-74e483310b49"
+            "e28b91cf-c90a-45cd-ad83-7360f32e0f3b",
+            "623d5852-b8bb-40d3-8e30-3f3b0ce5b920"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 4440,
+          "duration": 4511,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

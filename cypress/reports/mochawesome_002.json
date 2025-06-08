@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-08T19:53:46.103Z",
-    "end": "2025-06-08T19:53:50.960Z",
-    "duration": 4857,
+    "start": "2025-06-08T20:07:02.414Z",
+    "end": "2025-06-08T20:07:07.053Z",
+    "duration": 4639,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "0ecef371-6160-4723-94f6-49387949e853",
+      "uuid": "762002da-3140-43c9-b3b1-5ed8c73287dc",
       "title": "",
       "fullFile": "cypress/e2e/loginFluxo.cy.js",
       "file": "cypress/e2e/loginFluxo.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "cdd9ee2e-52bf-4163-8d31-163dd28a9183",
+          "uuid": "267284e4-f260-45c5-85fd-4f48b6b6d78d",
           "title": "Fluxo completo de Login e cadastro de usuário",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Deve validar o fluxo completo: cadastro, erro de login e login com sucesso",
               "fullTitle": "Fluxo completo de Login e cadastro de usuário Deve validar o fluxo completo: cadastro, erro de login e login com sucesso",
               "timedOut": null,
-              "duration": 4846,
+              "duration": 4633,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "const usuario = (0, _fakeUser.gerarUsuarioFake)();\n// Login com usuário não cadastrado\ncy.realizarLogin(usuario.email, usuario.senha);\ncy.validarAlerta('Problemas com o login do usuário', 'danger');\n// Cadastro de usuário\ncy.cadastrarUsuario(usuario);\ncy.validarAlerta('Usuário inserido com sucesso', 'success');\n// Login com sucesso\ncy.realizarLogin(usuario.email, usuario.senha);\ncy.validarAlerta(`Bem vindo, ${usuario.nome}!`, 'success');\ncy.realizarLogout();",
               "err": {},
-              "uuid": "518b3427-8bee-42b3-af98-1777bcf5064c",
-              "parentUUID": "cdd9ee2e-52bf-4163-8d31-163dd28a9183",
+              "uuid": "18ef227a-26d8-49e7-ad01-4f35a1d4b1f5",
+              "parentUUID": "267284e4-f260-45c5-85fd-4f48b6b6d78d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "518b3427-8bee-42b3-af98-1777bcf5064c"
+            "18ef227a-26d8-49e7-ad01-4f35a1d4b1f5"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 4846,
+          "duration": 4633,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

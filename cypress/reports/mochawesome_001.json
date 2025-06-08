@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-08T19:53:40.025Z",
-    "end": "2025-06-08T19:53:42.772Z",
-    "duration": 2747,
+    "start": "2025-06-08T20:06:56.602Z",
+    "end": "2025-06-08T20:06:59.376Z",
+    "duration": 2774,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "61fd6050-cc82-49f3-96f4-4c6e5540758f",
+      "uuid": "ea2f32d2-cdea-421f-8162-b44fc4482a8c",
       "title": "",
       "fullFile": "cypress/e2e/login.cy.js",
       "file": "cypress/e2e/login.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "45d3f4e0-810d-4a23-b700-5ca46c60add2",
+          "uuid": "7a4ca404-fc8a-472e-9d70-daf1f10b0c7d",
           "title": "Login - Seu Barriga",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Deve realizar login com sucesso",
               "fullTitle": "Login - Seu Barriga Deve realizar login com sucesso",
               "timedOut": null,
-              "duration": 1662,
+              "duration": 1630,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.realizarLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));\ncy.validarAlerta(`Bem vindo, ${Cypress.env('NOME')}!`, 'success');\ncy.realizarLogout();",
               "err": {},
-              "uuid": "31d2a5b8-7841-468a-8b2e-2a8d9ef7dac2",
-              "parentUUID": "45d3f4e0-810d-4a23-b700-5ca46c60add2",
+              "uuid": "8cafe528-d0f0-4725-bd60-146d7c9c7261",
+              "parentUUID": "7a4ca404-fc8a-472e-9d70-daf1f10b0c7d",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Não Deve realizar login com sucesso",
               "fullTitle": "Login - Seu Barriga Não Deve realizar login com sucesso",
               "timedOut": null,
-              "duration": 1070,
+              "duration": 1130,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "const emailFaker = _faker.faker.internet.email();\nconst senhaFaker = _faker.faker.internet.password();\ncy.realizarLogin(emailFaker, senhaFaker);\ncy.validarAlerta('Problemas com o login do usuário', 'danger');",
               "err": {},
-              "uuid": "8d9464dc-92fe-468e-954b-e60613b63452",
-              "parentUUID": "45d3f4e0-810d-4a23-b700-5ca46c60add2",
+              "uuid": "20b25f48-f6b4-46e2-be38-29eabddc71db",
+              "parentUUID": "7a4ca404-fc8a-472e-9d70-daf1f10b0c7d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "31d2a5b8-7841-468a-8b2e-2a8d9ef7dac2",
-            "8d9464dc-92fe-468e-954b-e60613b63452"
+            "8cafe528-d0f0-4725-bd60-146d7c9c7261",
+            "20b25f48-f6b4-46e2-be38-29eabddc71db"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 2732,
+          "duration": 2760,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
