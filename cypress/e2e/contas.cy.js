@@ -1,8 +1,8 @@
-import {gerarNomeConta} from "../support/fakeUser";
+import {gerarContas, gerarNomeConta} from "../support/fakeConta";
+
 
 describe('Fluxo completo de Contas', () => {
-    const conta1 = gerarNomeConta('A');
-    const conta2 = gerarNomeConta('B');
+    const contas = gerarContas(2)
 
     beforeEach(() => {
         cy.realizarLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
@@ -10,14 +10,17 @@ describe('Fluxo completo de Contas', () => {
     })
 
     it('Deve cadastrar duas contas com sucesso', () => {
-       cy.acessarMenuConta();
-       cy.cadastrarConta(conta1);
-       cy.validarAlerta('Conta adicionada com sucesso!', 'success');
+        contas.forEach((nomeConta) => {
+            cy.acessarMenuConta();
+            cy.adicionarConta();
+            cy.cadastrarConta(nomeConta);
+            cy.validarAlerta('Conta adicionada com sucesso!', 'success');
 
-       cy.acessarMenuConta();
-       cy.cadastrarConta(conta2);
-       cy.validarAlerta('Conta adicionada com sucesso!', 'success');
-       cy.realizarLogout();
+
+            cy.acessarMenuConta();
+            cy.listarConta();
+            cy.contains(nomeConta).should('be.visible');
+        });
     });
 })
 

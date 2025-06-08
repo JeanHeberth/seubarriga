@@ -11,7 +11,6 @@ Cypress.Commands.add('realizarLogin', (email, senha) => {
 });
 
 /**
- *
  * @param {string} mensagemEsperada
  * @param {string} tipo
  * Comando personalizado para validar a mensagem
@@ -28,7 +27,6 @@ Cypress.Commands.add('validarAlerta', (mensagemEsperada, tipo = 'success') => {
 });
 
 /**
- *
  * @param {string} email
  * @param {string} senha
  * Comando personalizado para cadastro de usuário
@@ -51,17 +49,27 @@ Cypress.Commands.add('cadastrarUsuario', (usuario) => {
 
 /**
  *
- * @param {string} email
- * @param {string} senha
  * Comando personalizado para acessar menu de conta
  */
 Cypress.Commands.add('acessarMenuConta', () => {
     cy.get(':nth-child(2) > .dropdown-toggle').click();
+});
+
+/**
+ * Comando personalizado para adicionar conta
+ */
+Cypress.Commands.add('adicionarConta', () => {
     cy.contains('Adicionar').click();
 });
 
 /**
- *
+ * Comando personalizado para listar contas
+ */
+Cypress.Commands.add('listarConta', () => {
+    cy.contains('Listar').click();
+});
+
+/**
  * @param {string} email
  * @param {string} senha
  * Comando personalizado para cadastro de conta
@@ -72,7 +80,6 @@ Cypress.Commands.add('cadastrarConta', (nomeConta) => {
 });
 
 /**
- *
  * Comando personalizado para realizar logout
  */
 Cypress.Commands.add('realizarLogout', () => {
