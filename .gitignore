@@ -1,28 +1,30 @@
-# Node.js
+# 📦 Node.js
 node_modules/
 package-lock.json
 
-# Cypress
+# 🧪 Cypress
 cypress/videos/
 cypress/screenshots/
 cypress/downloads/
 cypress/results/
 
-# Relatórios
+# 📁 Relatórios de Testes
 allure-results/
 mochawesome-report/
+mochawesome.json
+cypress/reports/
 
-# Sistema operacional
+# ⚙️ Arquivos de ambiente
+.env
+.env.*
+cypress.env.json
+
+# 💻 Arquivos de sistema e IDEs
 .DS_Store
 Thumbs.db
-
-# IDEs
 .idea/
 .vscode/
 
-# Logs e temporários
+# 🧹 Logs e arquivos temporários
 *.log
 *.tmp
-*.env
-.env.*
-cypress.env.json
