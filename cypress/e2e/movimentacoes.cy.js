@@ -21,15 +21,17 @@ describe('Gestão de Movimentações', () => {
     });
 
     it('Não deve permitir criar movimentação com data inválida', () => {
-        const movimentacao = gerarMovimentacaoComDataInvalida();
+        const conta = 'Conta - 99999';
+        const movimentacao = gerarMovimentacaoComDataInvalida(conta);
         cy.criarMovimentacao(movimentacao);
         cy.get('.alert-danger')
             .should('contain', 'Data da Movimentação inválida')
             .and('contain', 'Data do pagamento inválida');
     });
 
-    it.only('Não deve permitir criar movimentação sem valor', () => {
-        const movimentacao = gerarMovimentacaoSemValor();
+    it('Não deve permitir criar movimentação sem valor', () => {
+        const conta = 'Conta - 99999';
+        const movimentacao = gerarMovimentacaoSemValor(conta);
         cy.criarMovimentacao(movimentacao);
         cy.get('.alert-danger')
             .should('contain', 'Valor é obrigatório')
