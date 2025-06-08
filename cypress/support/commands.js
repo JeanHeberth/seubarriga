@@ -110,3 +110,39 @@ Cypress.Commands.add('removerConta', (nomeConta) => {
 Cypress.Commands.add('realizarLogout', () => {
     cy.contains('Sair').click();
 });
+
+/**
+ * Comando personalizado para movimentação
+ */
+
+Cypress.Commands.add('criarMovimentacao', ({
+                                               tipo = 'Receita',
+                                               descricao = 'Teste',
+                                               interessado = 'Fulano',
+                                               valor = '100',
+                                               conta,
+                                               data = '10/06/2025',
+                                               status = true
+                                           }) => {
+    cy.visit('/movimentacao');
+    cy.get('#tipo').select(tipo);
+    cy.get('#data_transacao').type(data);
+    cy.get('#data_pagamento').type(data);
+    cy.get('#descricao').type(descricao);
+    cy.get('#interessado').type(interessado);
+    if (valor) cy.get('#valor').type(valor);
+
+    cy.get('#conta').select(conta);
+    if (status) cy.get('#status_pago').click();
+    cy.get('.btn-primary').click();
+});
+
+Cypress.Commands.add('validarAlertaMultiplosErros', (...mensagensEsperadas) => {
+    cy.get('.alert-danger li').then((lista) => {
+        const erros = [...lista].map(el => el.innerText.trim());
+        mensagensEsperadas.forEach(msg => {
+            expect(erros).to.include(msg);
+        });
+        cy.log('Mensagens recebidas:', erros);
+    });
+});
