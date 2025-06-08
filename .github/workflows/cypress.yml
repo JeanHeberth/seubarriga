@@ -31,7 +31,7 @@ jobs:
           npm run report:generate
 
       - name: 📤 Upload do relatório HTML
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
           path: mochawesome-report
