@@ -55,5 +55,6 @@ describe('Gestão de Contas', () => {
         cy.listarConta();
         cy.removerConta(contasFixas.comMovimentacao);
         cy.validarAlerta('Conta em uso na movimentações', 'danger');
+        cy.realizarLogout();
     });
 });

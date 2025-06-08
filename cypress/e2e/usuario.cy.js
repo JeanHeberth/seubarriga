@@ -28,5 +28,6 @@ describe('Cadastro de Usuários', () => {
 
         cy.cadastrarUsuario(usuario);
         cy.validarAlerta('Senha é um campo obrigatório', 'danger');
+
     });
 })

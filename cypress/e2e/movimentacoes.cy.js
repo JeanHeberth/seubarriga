@@ -36,5 +36,7 @@ describe('Gestão de Movimentações', () => {
         cy.get('.alert-danger')
             .should('contain', 'Valor é obrigatório')
             .and('contain', 'Valor deve ser um número');
+        cy.realizarLogout();
+
     });
 });
