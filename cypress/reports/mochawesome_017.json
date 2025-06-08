@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-06-08T19:58:45.559Z",
+    "end": "2025-06-08T19:58:51.770Z",
+    "duration": 6211,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b7b03151-3c6e-4ad3-ad83-adcb17b31785",
+      "title": "",
+      "fullFile": "cypress/e2e/usuario.cy.js",
+      "file": "cypress/e2e/usuario.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "dff7ff61-2496-443e-85a5-6113b916438a",
+          "title": "Cadastro de Usuários",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve cadastrar um usuário com sucesso",
+              "fullTitle": "Cadastro de Usuários Deve cadastrar um usuário com sucesso",
+              "timedOut": null,
+              "duration": 2124,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const usuario = (0, _fakeUser.gerarUsuarioFake)();\ncy.cadastrarUsuario(usuario);\ncy.validarAlerta('Usuário inserido com sucesso', 'success');",
+              "err": {},
+              "uuid": "8bfaf98f-8dfc-45fd-a02b-5e4be61e71cb",
+              "parentUUID": "dff7ff61-2496-443e-85a5-6113b916438a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar um usuário sem o campo nome",
+              "fullTitle": "Cadastro de Usuários Não deve cadastrar um usuário sem o campo nome",
+              "timedOut": null,
+              "duration": 1361,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const usuario = (0, _fakeUser.gerarUsuarioFake)({\n  nome: ''\n});\ncy.cadastrarUsuario(usuario);\ncy.validarAlerta('Nome é um campo obrigatório', 'danger');",
+              "err": {},
+              "uuid": "50c32d66-9aa1-406f-925a-b9215674c3d2",
+              "parentUUID": "dff7ff61-2496-443e-85a5-6113b916438a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Nao deve cadastrar um usuário sem o campo email",
+              "fullTitle": "Cadastro de Usuários Nao deve cadastrar um usuário sem o campo email",
+              "timedOut": null,
+              "duration": 1372,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const usuario = (0, _fakeUser.gerarUsuarioFake)({\n  email: ''\n});\ncy.cadastrarUsuario(usuario);\ncy.validarAlerta('Email é um campo obrigatório', 'danger');",
+              "err": {},
+              "uuid": "8700d737-5aa9-4059-bd08-e65bd9b6278c",
+              "parentUUID": "dff7ff61-2496-443e-85a5-6113b916438a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Nao deve cadastrar um usuário sem o campo senha",
+              "fullTitle": "Cadastro de Usuários Nao deve cadastrar um usuário sem o campo senha",
+              "timedOut": null,
+              "duration": 1326,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const usuario = (0, _fakeUser.gerarUsuarioFake)({\n  senha: ''\n});\ncy.cadastrarUsuario(usuario);\ncy.validarAlerta('Senha é um campo obrigatório', 'danger');",
+              "err": {},
+              "uuid": "02b95746-4b0a-4382-8453-378ba14b8f9e",
+              "parentUUID": "dff7ff61-2496-443e-85a5-6113b916438a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8bfaf98f-8dfc-45fd-a02b-5e4be61e71cb",
+            "50c32d66-9aa1-406f-925a-b9215674c3d2",
+            "8700d737-5aa9-4059-bd08-e65bd9b6278c",
+            "02b95746-4b0a-4382-8453-378ba14b8f9e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6183,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
