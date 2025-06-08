@@ -1,12 +1,16 @@
+# 💼 Automação de Testes – Seu Barriga (Cypress)
+
+# 📘 Projeto de Testes Automatizados - Seu Barriga
+
 Este projeto automatiza testes funcionais na aplicação [Seu Barriga](https://seubarriga.wcaquino.me) utilizando o framework Cypress.
 
 ---
 
 ## ✨ Tecnologias e Ferramentas
 
-- ✅ **Cypress** — Testes de ponta a ponta
-- ✅ **Faker.js** — Geração de dados dinâmicos
-- ✅ **Mochawesome** — Relatórios detalhados em HTML/JSON
+* ✅ **Cypress** — Testes de ponta a ponta
+* ✅ **Faker.js** — Geração de dados dinâmicos
+* ✅ **Mochawesome** — Relatórios detalhados em HTML/JSON
 
 ---
 
@@ -21,16 +25,25 @@ cypress/
 └── videos/               # Gravações dos testes (ignorado pelo Git)
 mochawesome-report/       # Relatório final (ignorado pelo Git)
 ```
-## ⚙️ Configuração de ambiente
 
-Crie o arquivo `cypress.env.json` na raiz do projeto para armazenar suas credenciais de login:
+---
+
+## ⚙️ Configuração de Ambiente
+
+Por questões didáticas, este projeto **não utiliza arquivos `.env`**, visto que os usuários utilizados nos testes são fictícios e públicos.
+
+**Entretanto**, o correto em ambientes reais é utilizar o arquivo `cypress.env.json`:
 
 ```json
 {
   "EMAIL": "seu_email_valido_no_seubarriga@gmail.com",
   "PASSWORD": "sua_senha_valida_no_seubarriga",
+  "NOME": "Seu Nome Aqui"
 }
 ```
+
+Como alternativa, este projeto usa um arquivo JSON de configuração interna com os dados fixos do usuário fictício para facilitar a execução e rastreabilidade.
+
 ---
 
 ## ⚙️ Instalação
@@ -68,8 +81,9 @@ npm run report
 ```
 
 Isso irá:
-- Mesclar os arquivos `.json` gerados
-- Criar o relatório em `mochawesome-report/mochawesome.html`
+
+* Mesclar os arquivos `.json` gerados
+* Criar o relatório em `mochawesome-report/mochawesome.html`
 
 Abra o relatório com:
 
@@ -88,3 +102,16 @@ open mochawesome-report/mochawesome.html
   "report": "npm run report:merge && npm run report:generate"
 }
 ```
+
+---
+
+## 🔗 Integração Contínua
+
+Este projeto também conta com um workflow do GitHub Actions para executar os testes automaticamente e gerar relatórios. Verifique o arquivo `.github/workflows/main.yml` para mais detalhes.
+
+
+
+## 👤 Autor
+
+Jean Heberth Souza Vieira  
+🔗 [github.com/JeanHeberth](https://github.com/JeanHeberth)
