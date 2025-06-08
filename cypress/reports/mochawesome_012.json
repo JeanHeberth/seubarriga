@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-06-08T19:57:53.765Z",
+    "end": "2025-06-08T19:58:06.444Z",
+    "duration": 12679,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4032a0c7-5c74-45fb-b6f4-01130c93cdd7",
+      "title": "",
+      "fullFile": "cypress/e2e/contas.cy.js",
+      "file": "cypress/e2e/contas.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0b077602-7f98-4e0a-a55b-bf4feb7ed3ad",
+          "title": "Gestão de Contas",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve cadastrar duas contas com sucesso",
+              "fullTitle": "Gestão de Contas Deve cadastrar duas contas com sucesso",
+              "timedOut": null,
+              "duration": 4687,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "contas.forEach(nomeConta => {\n  cy.acessarMenuConta();\n  cy.adicionarConta();\n  cy.cadastrarConta(nomeConta);\n  cy.validarAlerta('Conta adicionada com sucesso!', 'success');\n});",
+              "err": {},
+              "uuid": "caab88ac-6772-4859-a864-1e7b8be73e28",
+              "parentUUID": "0b077602-7f98-4e0a-a55b-bf4feb7ed3ad",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve editar a primeira conta",
+              "fullTitle": "Gestão de Contas Deve editar a primeira conta",
+              "timedOut": null,
+              "duration": 3299,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const nomeOriginal = contas[0];\ncy.acessarMenuConta();\ncy.adicionarConta();\ncy.cadastrarConta(nomeOriginal);\ncy.acessarMenuConta();\ncy.listarConta();\ncy.editarConta(nomeOriginal);\ncy.cadastrarConta(contaAtualizada);\ncy.validarAlerta('Conta alterada com sucesso!', 'success');",
+              "err": {},
+              "uuid": "2358512d-b44c-4cf2-8922-14b82bbe7d09",
+              "parentUUID": "0b077602-7f98-4e0a-a55b-bf4feb7ed3ad",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve criar uma conta com nome já existente",
+              "fullTitle": "Gestão de Contas Não deve criar uma conta com nome já existente",
+              "timedOut": null,
+              "duration": 2810,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const nomeDuplicado = contasFixas.original;\ncy.acessarMenuConta();\ncy.adicionarConta();\ncy.cadastrarConta(nomeDuplicado);\ncy.acessarMenuConta();\ncy.adicionarConta();\ncy.cadastrarConta(nomeDuplicado);\ncy.validarAlerta('Já existe uma conta com esse nome!', 'danger');",
+              "err": {},
+              "uuid": "4d92b98e-9283-4583-9ebc-1b07fb743c9a",
+              "parentUUID": "0b077602-7f98-4e0a-a55b-bf4feb7ed3ad",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve remover conta com movimentações vinculadas",
+              "fullTitle": "Gestão de Contas Não deve remover conta com movimentações vinculadas",
+              "timedOut": null,
+              "duration": 1818,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.acessarMenuConta();\ncy.listarConta();\ncy.removerConta(contasFixas.comMovimentacao);\ncy.validarAlerta('Conta em uso na movimentações', 'danger');",
+              "err": {},
+              "uuid": "b32e6dc7-b2dd-4dff-85d3-2b1c80b2056e",
+              "parentUUID": "0b077602-7f98-4e0a-a55b-bf4feb7ed3ad",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "caab88ac-6772-4859-a864-1e7b8be73e28",
+            "2358512d-b44c-4cf2-8922-14b82bbe7d09",
+            "4d92b98e-9283-4583-9ebc-1b07fb743c9a",
+            "b32e6dc7-b2dd-4dff-85d3-2b1c80b2056e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 12614,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

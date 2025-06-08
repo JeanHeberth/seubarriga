@@ -146,3 +146,57 @@ Cypress.Commands.add('validarAlertaMultiplosErros', (...mensagensEsperadas) => {
         cy.log('Mensagens recebidas:', erros);
     });
 });
+
+/**
+ * Acessa movimentação listada no resumo mensal
+ */
+Cypress.Commands.add('acessarResumoMensal', (mes, ano) => {
+    cy.visit('/extrato');
+    cy.get('.form-control').first().select(mes); // mês
+    cy.get('.form-control').last().select(ano);  // ano
+    cy.contains('Buscar').click();
+});
+
+/**
+ * Remove a primeira movimentação listada no resumo mensal
+ */
+Cypress.Commands.add('removerPrimeiraMovimentacaoDoResumo', () => {
+    cy.get('table tbody tr').first().within(() => {
+        cy.get('a[href*="/removerMovimentacao"]').click();
+    });
+});
+
+
+/**
+ * Filtra o resumo mensal pelo mês e ano desejado
+ * @param {string} mes - Ex: '06'
+ * @param {string} ano - Ex: '2025'
+ */
+Cypress.Commands.add('filtrarResumoMensal', (mes, ano) => {
+    cy.visit('/extrato');
+    cy.get('.form-control').first().select(mes); // mês
+    cy.get('.form-control').last().select(ano);  // ano
+    cy.contains('Buscar').click();
+});
+
+/**
+ * Acessa o resumo mensal pelo mês e ano desejado
+ */
+Cypress.Commands.add('acessarResumoMensal', (mes, ano) => {
+    cy.visit('/extrato');
+    cy.get('.form-control').first().select(mes); // mês
+    cy.get('.form-control').last().select(ano);  // ano
+    cy.contains('Buscar').click();
+});
+
+/**
+ * Valida se o resumo possui movimentações
+ */
+Cypress.Commands.add('validarSeResumoPossuiMovimentacoes', () => {
+    cy.get('table tbody tr').should('have.length.at.least', 1);
+});
+
+
+
+
+
