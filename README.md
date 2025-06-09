@@ -109,6 +109,10 @@ open mochawesome-report/mochawesome.html
 
 Este projeto também conta com um workflow do GitHub Actions para executar os testes automaticamente e gerar relatórios. Verifique o arquivo `.github/workflows/main.yml` para mais detalhes.
 
+## 📎 Documentos Anexos
+
+- [Evidências dos Testes (PDF)](./docs/Testes_SeuBarriga.pdf)
+
 
 
 ## 👤 Autor

@@ -21,6 +21,11 @@ describe('Gestão de Contas', () => {
         });
     });
 
+    it('Deve listar contas cadastradas', () => {
+        cy.acessarMenuConta();
+        cy.listarConta();
+    });
+
     it('Deve editar a primeira conta', () => {
         const nomeOriginal = contasFixas.paraEdicao;
 
@@ -58,7 +63,6 @@ describe('Gestão de Contas', () => {
         cy.listarConta();
         cy.removerConta(nomeConta);
         cy.validarAlerta('Conta em uso na movimentações', 'danger');
-        cy.realizarLogout();
     });
 
 });
