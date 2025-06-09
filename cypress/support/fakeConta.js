@@ -2,7 +2,6 @@ import {faker} from '@faker-js/faker';
 
 export function gerarNomeConta(sufixo = '') {
     return `Conta - ${faker.number.int({min: 100000, max: 999999})}`;
-
 }
 
 export function gerarContas(quantidade = 5) {

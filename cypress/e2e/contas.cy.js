@@ -11,6 +11,7 @@ describe('Gestão de Contas', () => {
             cy.validarAlerta(`Bem vindo, ${usuario.nome}!`, 'success');
         });
     });
+
     it('Deve cadastrar duas contas com sucesso', () => {
         contas.forEach((nomeConta) => {
             cy.acessarMenuConta();
@@ -21,7 +22,7 @@ describe('Gestão de Contas', () => {
     });
 
     it('Deve editar a primeira conta', () => {
-        const nomeOriginal = contas[0];
+        const nomeOriginal = contasFixas.paraEdicao;
 
         cy.acessarMenuConta();
         cy.adicionarConta();
@@ -48,10 +49,16 @@ describe('Gestão de Contas', () => {
     });
 
     it('Não deve remover conta com movimentações vinculadas', () => {
+        const nomeConta = gerarContasFixas().comMovimentacao;
+
+        cy.garantirContaExiste(nomeConta);
+        cy.garantirMovimentacaoParaConta();
+
         cy.acessarMenuConta();
         cy.listarConta();
-        cy.removerConta(contasFixas.comMovimentacao);
+        cy.removerConta(nomeConta);
         cy.validarAlerta('Conta em uso na movimentações', 'danger');
         cy.realizarLogout();
     });
+
 });
