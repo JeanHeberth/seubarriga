@@ -3,6 +3,8 @@
  * @param {string} senha
  * Comando personalizado para realizar o login
  */
+import {gerarContasFixas} from "./fakeConta";
+
 Cypress.Commands.add('realizarLogin', (email, senha) => {
     cy.visit('/login');
     cy.get('#email').type(email);
@@ -211,6 +213,73 @@ Cypress.Commands.add('validarSeResumoPossuiMovimentacoes', () => {
 });
 
 
+/**
+ * Garantir que a conta exista
+ * @param {string} conta
+ */
+Cypress.Commands.add('garantirContaExiste', (nomeConta) => {
+    cy.acessarMenuConta();
+    cy.listarConta();
 
+    cy.get('body').then(($body) => {
+        const contaExiste = $body.find('td').filter((i, el) => el.innerText.includes(nomeConta)).length > 0;
+
+        if (!contaExiste) {
+            cy.acessarMenuConta();
+            cy.adicionarConta();
+            cy.cadastrarConta(nomeConta);
+
+            // ⚠️ Garante que a conta também está disponível no dropdown da tela de movimentação
+            cy.visit('/movimentacao');
+            cy.get('#conta')
+                .find('option')
+                .contains(nomeConta)
+                .then(($opt) => {
+                    // Se não encontrar a conta após criar, lança erro
+                    if (!$opt.length) {
+                        throw new Error(`Conta "${nomeConta}" criada mas não apareceu no dropdown de movimentações.`);
+                    }
+                });
+        }
+    });
+});
+
+
+Cypress.Commands.add('garantirMovimentacaoParaConta', () => {
+    const nomeConta = gerarContasFixas().comMovimentacao;
+
+    cy.visit('/extrato');
+    cy.get('.form-control').first().select('06');
+    cy.get('.form-control').last().select('2025');
+    cy.contains('Buscar').click();
+
+    cy.get('body').then(($body) => {
+        const textoTabela = $body.find('table tbody').text();
+        const temMovimentacao = textoTabela.includes(nomeConta);
+
+        if (!temMovimentacao) {
+            cy.visit('/movimentacao');
+
+            cy.get('#tipo').select('Receita');
+            cy.get('#data_transacao').type('09/06/2025');
+            cy.get('#data_pagamento').type('09/06/2025');
+            cy.get('#descricao').type('Movimentação para teste');
+            cy.get('#interessado').type('Fulano QA');
+            cy.get('#valor').type('100');
+
+            // 🔍 Aqui selecionamos a opção exata que contém o nome da conta
+            cy.get('#conta')
+                .find('option')
+                .contains(nomeConta)
+                .then($opt => {
+                    cy.get('#conta').select($opt.val());
+                });
+
+            cy.get('#status_pago').check();
+            cy.get('.btn-primary').click();
+            cy.validarAlerta('Movimentação adicionada com sucesso!', 'success');
+        }
+    });
+});
 
 
